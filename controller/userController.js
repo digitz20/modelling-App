@@ -1,7 +1,6 @@
 const mongoose = require('mongoose')
 const userModel = require('../models/user')
 const fs = require('fs')
-const { console } = require('inspector')
 
 
 
