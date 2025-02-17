@@ -100,7 +100,7 @@ exports.updateUser = async (req, res) => {
             if(fs.existsSync(profilePicturePath)) {
                 fs.unlinkSync(profilePicturePath)
 
-                const file = req.files.profileImage
+                const file = req.files.profileImage[0]
 
                 data.profileImage = file.originalname
             }
