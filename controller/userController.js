@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const userModel = require('../models/user')
 const fs = require('fs')
+const { console } = require('inspector')
 
 
 
@@ -11,7 +12,10 @@ exports.createUser = async (req, res) => {
 
         const file = req.files.profileImage[0]
 
+        console.log(file)
+
         const files = req.files.catalogs.map((e) => e.originalname)
+
 
         
         const userData = new userModel({
@@ -21,6 +25,7 @@ exports.createUser = async (req, res) => {
             profileImage: file.originalname,
             catalogs : files
         })
+
 
         await userData.save()
         
@@ -169,3 +174,5 @@ exports.deleteUser = async (req, res) => {
         res.status(500).json({message: 'internal server error', error:error.message})
     }
 }
+
+
